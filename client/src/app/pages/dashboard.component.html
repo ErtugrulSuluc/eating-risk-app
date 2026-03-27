@@ -1,0 +1,26 @@
+﻿<section class="grid" *ngIf="!loading; else loadingTpl">
+  <article class="panel">
+    <h2>Bugunku Durum</h2>
+    <ng-container *ngIf="lastEntry; else emptyTpl">
+      <p class="level" [class]="riskClass(lastEntry.riskLevel)">{{ lastEntry.riskLevel }}</p>
+      <p>Skor: {{ lastEntry.riskScore }}</p>
+      <p>Tarih: {{ lastEntry.date | date:'short' }}</p>
+    </ng-container>
+  </article>
+
+  <article class="panel">
+    <h2>Kisa Yorum</h2>
+    <p>{{ trendText }}</p>
+    <p *ngIf="lastEntry?.riskLevel === 'HIGH'">Son gunlerde duzensiz yeme davranisi yuksek gorunuyor.</p>
+    <p *ngIf="lastEntry?.riskLevel === 'MEDIUM'">Dikkat edilmesi gereken belirtiler mevcut.</p>
+    <p *ngIf="lastEntry?.riskLevel === 'LOW'">Davranis dengeli gorunuyor, takibe devam et.</p>
+  </article>
+</section>
+
+<ng-template #emptyTpl>
+  <p>Henuz veri yok. Ilk girisini yap.</p>
+</ng-template>
+
+<ng-template #loadingTpl>
+  <p>Yukleniyor...</p>
+</ng-template>

@@ -1,0 +1,19 @@
+﻿<section class="panel">
+  <h2>Son 7 Gun</h2>
+
+  <div *ngIf="entries.length; else emptyTpl" class="rows">
+    <article *ngFor="let entry of entries" class="row">
+      <div class="meta">
+        <strong>{{ entry.date | date:'shortDate' }}</strong>
+        <span>{{ entry.riskLevel }} ({{ entry.riskScore }})</span>
+      </div>
+      <div class="bar-bg">
+        <div class="bar" [style.width]="barWidth(entry.riskScore)"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<ng-template #emptyTpl>
+  <p>Gecmis kayit bulunamadi.</p>
+</ng-template>

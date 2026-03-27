@@ -1,0 +1,14 @@
+{
+  "name": "eating-risk-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
+    "start": "npm --prefix server start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

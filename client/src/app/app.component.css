@@ -1,0 +1,49 @@
+﻿:host {
+  display: block;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 22px;
+  background: #0f4940;
+  color: #fff;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+a {
+  color: #dff4ee;
+  text-decoration: none;
+}
+
+a.active {
+  font-weight: 700;
+}
+
+button {
+  border: 1px solid #8ec3b5;
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 960px;
+  margin: 22px auto;
+  padding: 0 16px 20px;
+}

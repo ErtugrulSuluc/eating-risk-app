@@ -1,0 +1,14 @@
+﻿<header class="topbar">
+  <div class="brand">Eating Risk App</div>
+
+  <nav *ngIf="authService.hasToken()">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/entry" routerLinkActive="active">Gunluk Giris</a>
+    <a routerLink="/history" routerLinkActive="active">Gecmis</a>
+    <button (click)="logout()">Cikis</button>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

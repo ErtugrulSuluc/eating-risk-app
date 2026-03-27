@@ -1,0 +1,27 @@
+﻿<section class="card">
+  <h2>Gunluk Veri Girisi</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="entry-form">
+    <label>Bugun kac ogun yedin?</label>
+    <input type="number" formControlName="mealCount" min="0" max="8" />
+
+    <label class="check"><input type="checkbox" formControlName="skippedMeal" /> Ogun atladim</label>
+    <label class="check"><input type="checkbox" formControlName="nightEating" /> Gece yeme oldu</label>
+    <label class="check"><input type="checkbox" formControlName="bingeEating" /> Tikinircasina yedim</label>
+    <label class="check"><input type="checkbox" formControlName="emotionalEating" /> Ac degilken yedim</label>
+
+    <label>Stres seviyesi (1-5)</label>
+    <input type="number" formControlName="stressLevel" min="1" max="5" />
+
+    <label>Ruh hali</label>
+    <select formControlName="mood">
+      <option value="good">Iyi</option>
+      <option value="normal">Normal</option>
+      <option value="bad">Kotu</option>
+    </select>
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Kaydediliyor...' : 'Gonder' }}</button>
+  </form>
+
+  <p class="result" *ngIf="resultText">{{ resultText }}</p>
+</section>

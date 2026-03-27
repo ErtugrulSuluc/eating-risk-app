@@ -1,0 +1,34 @@
+﻿.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(16, 45, 40, 0.1);
+  padding: 22px;
+}
+
+.level {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.risk.low {
+  background: #dff9ed;
+  color: #0f7f4d;
+}
+
+.risk.medium {
+  background: #fff3d6;
+  color: #997208;
+}
+
+.risk.high {
+  background: #ffe0df;
+  color: #b32b2a;
+}

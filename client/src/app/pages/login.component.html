@@ -1,0 +1,25 @@
+﻿<section class="auth-wrap">
+  <div class="auth-card">
+    <h1>Yeme Riski Takip</h1>
+    <p>Hesabina giris yap ve gunluk verini takip et.</p>
+
+    <div class="mode-buttons">
+      <button [class.active]="mode === 'login'" (click)="switchMode('login')">Giris</button>
+      <button [class.active]="mode === 'register'" (click)="switchMode('register')">Kayit</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="ornek@mail.com" />
+
+      <label>Sifre</label>
+      <input type="password" formControlName="password" placeholder="en az 6 karakter" />
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Isleniyor...' : (mode === 'login' ? 'Giris Yap' : 'Kayit Ol') }}
+      </button>
+    </form>
+
+    <p class="message" *ngIf="message">{{ message }}</p>
+  </div>
+</section>
