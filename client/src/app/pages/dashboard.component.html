@@ -18,6 +18,23 @@
       <strong>One cikan faktorler:</strong>
       <p>{{ lastEntry?.xaiContributors?.join(', ') }}</p>
     </div>
+    <div *ngIf="lastEntry?.xaiRecommendation">
+      <strong>Kisa Oneri:</strong>
+      <p>{{ lastEntry?.xaiRecommendation }}</p>
+    </div>
+  </article>
+
+  <article class="panel" *ngIf="lastEntry?.xaiDomainScores">
+    <h2>Alan Bazli XAI Skoru</h2>
+    <div class="xai-row" *ngFor="let row of xaiRows(lastEntry!)">
+      <div class="xai-meta">
+        <span>{{ row.label }}</span>
+        <strong>{{ row.score }}/3</strong>
+      </div>
+      <div class="xai-bar-bg">
+        <div class="xai-bar" [style.width]="row.width"></div>
+      </div>
+    </div>
   </article>
 </section>
 

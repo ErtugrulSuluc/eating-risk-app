@@ -34,6 +34,13 @@ function calculateRisk(data) {
   const cueReactivity = Number(data.cueReactivity) || 0;
   const bodyImageConcern = Number(data.bodyImageConcern) || 0;
   const habitualCompulsion = Number(data.habitualCompulsion) || 0;
+  const domainScores = {
+    cognitiveControl: cognitiveControlConcern,
+    affective: affectiveEating,
+    salience: cueReactivity,
+    bodyImage: bodyImageConcern,
+    habit: habitualCompulsion
+  };
 
   score += Math.round(
     cognitiveControlConcern * 0.8 +
@@ -53,7 +60,23 @@ function calculateRisk(data) {
   if (score >= 4) level = 'MEDIUM';
   if (score >= 8) level = 'HIGH';
 
-  return { score, level, contributors };
+  const dominantDomain = Object.entries(domainScores).sort((a, b) => b[1] - a[1])[0][0];
+
+  const recommendations = {
+    cognitiveControl: 'Yemek kurallarini daha esnek hale getirip ogun duzenini korumayi dene.',
+    affective: 'Stresli anda yemek yerine kisa nefes egzersizi veya yuruyus eklemeyi dene.',
+    salience: 'Tetikleyici ortamlarda porsiyon plani yapmak ve gorunur atistirmaliklari azaltmak faydali olabilir.',
+    bodyImage: 'Beden odakli olumsuz dusunceler arttiginda profesyonel psikolojik destek dusunebilirsin.',
+    habit: 'Aliskanlikla yedigin anlari not al ve ayni saate alternatif rutin (su, kisa mola) ekle.'
+  };
+
+  return {
+    score,
+    level,
+    contributors,
+    domainScores,
+    recommendation: recommendations[dominantDomain]
+  };
 }
 
 function authMiddleware(req, res, next) {
@@ -138,7 +161,9 @@ app.post('/api/entries', authMiddleware, (req, res) => {
     habitualCompulsion: Number(data.habitualCompulsion) || 0,
     riskScore: risk.score,
     riskLevel: risk.level,
-    xaiContributors: risk.contributors
+    xaiContributors: risk.contributors,
+    xaiDomainScores: risk.domainScores,
+    xaiRecommendation: risk.recommendation
   };
 
   entries.push(entry);

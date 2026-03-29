@@ -10,6 +10,13 @@ import { Entry } from '../models/entry.model';
 export class DashboardComponent implements OnInit {
   entries: Entry[] = [];
   loading = true;
+  domainLabels: Record<string, string> = {
+    cognitiveControl: 'Bilissel Kontrol',
+    affective: 'Duygusal Yeme',
+    salience: 'Uyaran Hassasiyeti',
+    bodyImage: 'Beden Algisi',
+    habit: 'Aliskanlik Durtusu'
+  };
 
   constructor(private apiService: ApiService) {}
 
@@ -43,5 +50,16 @@ export class DashboardComponent implements OnInit {
 
   riskClass(level: string): string {
     return `risk ${level.toLowerCase()}`;
+  }
+
+  xaiRows(entry: Entry): Array<{ key: string; label: string; score: number; width: string }> {
+    if (!entry?.xaiDomainScores) return [];
+
+    return Object.entries(entry.xaiDomainScores).map(([key, score]) => ({
+      key,
+      label: this.domainLabels[key] || key,
+      score,
+      width: `${Math.min((score / 3) * 100, 100)}%`
+    }));
   }
 }

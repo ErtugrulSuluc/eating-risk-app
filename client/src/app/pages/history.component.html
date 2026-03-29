@@ -11,6 +11,23 @@
         <div class="bar" [style.width]="barWidth(entry.riskScore)"></div>
       </div>
     </article>
+
+    <article class="summary">
+      <h3>Alan Bazli Ozet</h3>
+      <p>{{ risingDomainText }}</p>
+
+      <div class="domain-rows" *ngIf="domainAverages.length">
+        <div class="domain-row" *ngFor="let row of domainAverages">
+          <div class="domain-meta">
+            <span>{{ row.label }}</span>
+            <strong>{{ row.avg }}/3</strong>
+          </div>
+          <div class="domain-bar-bg">
+            <div class="domain-bar" [style.width]="domainBarWidth(row.avg)"></div>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 

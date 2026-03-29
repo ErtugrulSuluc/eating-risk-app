@@ -20,6 +20,14 @@ export interface Entry extends EntryPayload {
   riskScore: number;
   riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
   xaiContributors: string[];
+  xaiDomainScores: {
+    cognitiveControl: number;
+    affective: number;
+    salience: number;
+    bodyImage: number;
+    habit: number;
+  };
+  xaiRecommendation: string;
 }
 
 export interface LoginResponse {

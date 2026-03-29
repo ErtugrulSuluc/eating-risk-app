@@ -11,7 +11,13 @@
     <label class="check"><input type="checkbox" formControlName="emotionalEating" /> Ac degilken yedim</label>
 
     <label>Stres seviyesi (1-5)</label>
-    <input type="number" formControlName="stressLevel" min="1" max="5" />
+    <select formControlName="stressLevel">
+      <option [ngValue]="1">1 - Cok dusuk</option>
+      <option [ngValue]="2">2 - Dusuk</option>
+      <option [ngValue]="3">3 - Orta</option>
+      <option [ngValue]="4">4 - Yuksek</option>
+      <option [ngValue]="5">5 - Cok yuksek</option>
+    </select>
 
     <label>Ruh hali</label>
     <select formControlName="mood">

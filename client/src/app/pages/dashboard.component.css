@@ -32,3 +32,26 @@
   background: #ffe0df;
   color: #b32b2a;
 }
+
+.xai-row {
+  margin-top: 10px;
+}
+
+.xai-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 0.92rem;
+}
+
+.xai-bar-bg {
+  height: 10px;
+  background: #edf4f2;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.xai-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4bb07a, #f0a63a, #db4e4e);
+}
