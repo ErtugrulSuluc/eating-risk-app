@@ -20,6 +20,7 @@ const entries = [];
 
 function calculateRisk(data) {
   let score = 0;
+  const contributors = [];
 
   if (data.skippedMeal) score += 2;
   if (data.nightEating) score += 2;
@@ -28,11 +29,31 @@ function calculateRisk(data) {
   if (Number(data.stressLevel) >= 4) score += 2;
   if (data.mood === 'bad') score += 2;
 
+  const cognitiveControlConcern = Number(data.cognitiveControlConcern) || 0;
+  const affectiveEating = Number(data.affectiveEating) || 0;
+  const cueReactivity = Number(data.cueReactivity) || 0;
+  const bodyImageConcern = Number(data.bodyImageConcern) || 0;
+  const habitualCompulsion = Number(data.habitualCompulsion) || 0;
+
+  score += Math.round(
+    cognitiveControlConcern * 0.8 +
+      affectiveEating * 1.2 +
+      cueReactivity * 0.8 +
+      bodyImageConcern * 1.2 +
+      habitualCompulsion * 1.0
+  );
+
+  if (cognitiveControlConcern >= 2) contributors.push('Bilişsel kontrol kaygısı');
+  if (affectiveEating >= 2) contributors.push('Duyguya bağlı yeme eğilimi');
+  if (cueReactivity >= 2) contributors.push('Tat/görsel uyaran hassasiyeti');
+  if (bodyImageConcern >= 2) contributors.push('Beden algısı kaygısı');
+  if (habitualCompulsion >= 2) contributors.push('Alışkanlığa dayalı yeme dürtüsü');
+
   let level = 'LOW';
   if (score >= 4) level = 'MEDIUM';
   if (score >= 8) level = 'HIGH';
 
-  return { score, level };
+  return { score, level, contributors };
 }
 
 function authMiddleware(req, res, next) {
@@ -110,8 +131,14 @@ app.post('/api/entries', authMiddleware, (req, res) => {
     emotionalEating: Boolean(data.emotionalEating),
     stressLevel: Number(data.stressLevel) || 1,
     mood: data.mood || 'normal',
+    cognitiveControlConcern: Number(data.cognitiveControlConcern) || 0,
+    affectiveEating: Number(data.affectiveEating) || 0,
+    cueReactivity: Number(data.cueReactivity) || 0,
+    bodyImageConcern: Number(data.bodyImageConcern) || 0,
+    habitualCompulsion: Number(data.habitualCompulsion) || 0,
     riskScore: risk.score,
-    riskLevel: risk.level
+    riskLevel: risk.level,
+    xaiContributors: risk.contributors
   };
 
   entries.push(entry);

@@ -20,6 +20,48 @@
       <option value="bad">Kotu</option>
     </select>
 
+    <h3>Arastirma Tabanli Ek Faktorler (XAI)</h3>
+
+    <label>1) Kilo/sekil kaygisiyla yemeyi ne siklikla kisitlarsin?</label>
+    <select formControlName="cognitiveControlConcern">
+      <option [ngValue]="0">Never</option>
+      <option [ngValue]="1">Seldom</option>
+      <option [ngValue]="2">Sometimes</option>
+      <option [ngValue]="3">Often</option>
+    </select>
+
+    <label>2) Uzgun/gergin/yalniz hissettiginde yeme istegi olur mu?</label>
+    <select formControlName="affectiveEating">
+      <option [ngValue]="0">Never</option>
+      <option [ngValue]="1">Seldom</option>
+      <option [ngValue]="2">Sometimes</option>
+      <option [ngValue]="3">Often</option>
+    </select>
+
+    <label>3) Lezzet/goruntu/koku gibi uyaranlar sende yeme istegi tetikler mi?</label>
+    <select formControlName="cueReactivity">
+      <option [ngValue]="0">Never</option>
+      <option [ngValue]="1">Seldom</option>
+      <option [ngValue]="2">Sometimes</option>
+      <option [ngValue]="3">Often</option>
+    </select>
+
+    <label>4) Son 28 gunde beden goruntunle ilgili rahatsizlik ne duzeydeydi?</label>
+    <select formControlName="bodyImageConcern">
+      <option [ngValue]="0">No days / Never</option>
+      <option [ngValue]="1">1-12 days / Seldom</option>
+      <option [ngValue]="2">13-27 days / Sometimes</option>
+      <option [ngValue]="3">Every day / Often</option>
+    </select>
+
+    <label>5) Ac olmasan da aliskanlikla yeme durumu yasiyor musun?</label>
+    <select formControlName="habitualCompulsion">
+      <option [ngValue]="0">Never</option>
+      <option [ngValue]="1">Seldom</option>
+      <option [ngValue]="2">Sometimes</option>
+      <option [ngValue]="3">Often</option>
+    </select>
+
     <button type="submit" [disabled]="loading">{{ loading ? 'Kaydediliyor...' : 'Gonder' }}</button>
   </form>
 

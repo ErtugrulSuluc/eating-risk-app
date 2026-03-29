@@ -15,6 +15,12 @@ h2 {
   gap: 10px;
 }
 
+h3 {
+  margin: 10px 0 0;
+  color: #174f46;
+  font-size: 1rem;
+}
+
 .entry-form input,
 .entry-form select {
   border: 1px solid #c8dfda;

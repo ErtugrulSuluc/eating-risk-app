@@ -14,6 +14,10 @@
     <p *ngIf="lastEntry?.riskLevel === 'HIGH'">Son gunlerde duzensiz yeme davranisi yuksek gorunuyor.</p>
     <p *ngIf="lastEntry?.riskLevel === 'MEDIUM'">Dikkat edilmesi gereken belirtiler mevcut.</p>
     <p *ngIf="lastEntry?.riskLevel === 'LOW'">Davranis dengeli gorunuyor, takibe devam et.</p>
+    <div *ngIf="lastEntry?.xaiContributors?.length">
+      <strong>One cikan faktorler:</strong>
+      <p>{{ lastEntry?.xaiContributors?.join(', ') }}</p>
+    </div>
   </article>
 </section>
 

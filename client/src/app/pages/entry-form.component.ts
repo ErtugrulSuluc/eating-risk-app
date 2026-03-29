@@ -18,7 +18,12 @@ export class EntryFormComponent {
     bingeEating: [false],
     emotionalEating: [false],
     stressLevel: [1, [Validators.required, Validators.min(1), Validators.max(5)]],
-    mood: ['normal', Validators.required]
+    mood: ['normal', Validators.required],
+    cognitiveControlConcern: [0, Validators.required],
+    affectiveEating: [0, Validators.required],
+    cueReactivity: [0, Validators.required],
+    bodyImageConcern: [0, Validators.required],
+    habitualCompulsion: [0, Validators.required]
   });
 
   constructor(private fb: FormBuilder, private apiService: ApiService) {}

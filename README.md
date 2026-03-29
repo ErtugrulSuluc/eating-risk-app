@@ -7,6 +7,7 @@ Bu proje deploy edilmeye hazir hale getirildi.
 - `server/`: Node.js + Express API
 - Tek host: Production'da backend, Angular `dist` dosyalarini da servis eder.
 - API yolu: `/api/*`
+- XAI uyumlu ek faktorler: `Cognitive Control`, `Affective`, `Salience/Taste`, `Body Image`, `Habit`
 
 ## Local Calistirma
 
@@ -36,6 +37,10 @@ Frontend: `http://localhost:4200`
 6. Deploy bitince tek bir URL alacaksin ve hem frontend hem backend o URL'de calisacak.
 
 Not: Bu MVP surumunde veri bellekte tutuluyor. Render yeniden baslatirsa kayitlar silinir.
+
+## Entegre Edilen Kaynak
+- Kaggle Notebook: `Analyzing Eating Disorder Survey Data with XAI`
+- Notebookun kullandigi anket iskeleti (Neurobehavioral Factors) uygulamadaki ek 5 soru grubuna uyarlandi.
 
 ## Tek Komutla Build/Start Scriptleri
 Kok dizinde:
